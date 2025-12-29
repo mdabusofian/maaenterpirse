@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>মা এন্টারপ্রাইজ- লেনদেন ম্যানেজমেন্ট সিস্টেম</title>
+    <title>মা এন্টারপ্রাইজ - লেনদেন ম্যানেজম্যান্ট সিস্টেম</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 
     <style>
         :root { --sidebar-bg: #0f172a; --primary: #3b82f6; --body-bg: #f1f5f9; }
-        body { background-color: var(--body-bg); font-family: 'Hind Siliguri', sans-serif; overflow-x: hidden; padding-bottom: 70px; }
+        body { background-color: var(--body-bg); font-family: 'Hind Siliguri', sans-serif; overflow-x: hidden; padding-bottom: 75px; }
         
         /* Sidebar for Desktop */
         .sidebar { background: var(--sidebar-bg); min-height: 100vh; width: 250px; position: fixed; color: white; transition: 0.3s; z-index: 100; }
@@ -31,8 +31,7 @@
 
         /* Cards */
         .stat-card { border: none; border-radius: 15px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); background: white; position: relative; }
-        .bg-gradient-blue { background: linear-gradient(45deg, #3b82f6, #2563eb); color: white; }
-
+        
         /* Utility */
         .hidden { display: none !important; }
         #loader { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); z-index: 9999; justify-content: center; align-items: center; }
@@ -53,12 +52,13 @@
     <div class="d-flex align-items-center justify-content-center" style="height: 100vh; background: #0f172a;">
         <div class="card p-4 shadow-lg" style="width: 380px; border-radius: 20px;">
             <div class="text-center mb-4">
-                <div class="bg-primary d-inline-block p-3 rounded-circle mb-3"><i class="fas fa-shield-alt fa-2x text-white"></i></div>
-                <h4 class="fw-bold">এডমিন লগইন</h4>
+                <div class="bg-primary d-inline-block p-3 rounded-circle mb-3"><i class="fas fa-store fa-2x text-white"></i></div>
+                <h4 class="fw-bold">মা এন্টারপ্রাইজ</h4>
+                <p class="text-muted small">লেনদেন ম্যানেজম্যান্ট সিস্টেম</p>
             </div>
             <input type="text" id="user" class="form-control mb-3" placeholder="ইউজারনেম">
             <input type="password" id="pass" class="form-control mb-3" placeholder="পাসওয়ার্ড">
-            <button onclick="login()" class="btn btn-primary w-100 py-2 rounded-pill fw-bold">সিস্টেমে প্রবেশ করুন</button>
+            <button onclick="login()" class="btn btn-primary w-100 py-2 rounded-pill fw-bold">লগইন করুন</button>
         </div>
     </div>
 </div>
@@ -66,13 +66,14 @@
 <div id="main-app" class="hidden">
     <div class="sidebar shadow">
         <div class="p-4 text-center border-bottom border-secondary">
-            <h4 class="fw-bold mb-0">মা এন্টারপ্রাইজ-েলেনদেন ম্যানেজমেন্ট </h4>
+            <h4 class="fw-bold mb-0 text-white">মা এন্টারপ্রাইজ-লেনদেন ম্যানেজম্যান্ট সিস্টেম </h4>
         </div>
         <div class="mt-4">
             <a onclick="showSection('dashboard')" class="nav-link active" id="btn-dashboard"><i class="fas fa-home me-2"></i> ড্যাশবোর্ড</a>
             <a onclick="showSection('entry')" class="nav-link" id="btn-entry"><i class="fas fa-plus-circle me-2"></i> নতুন লেনদেন</a>
+                        <a onclick="showSection('reports')" class="nav-link" id="btn-reports"><i class="fas fa-file-invoice-dollar me-2"></i> পার্টনার রিপোর্ট</a>
             <a onclick="showSection('partner-add')" class="nav-link" id="btn-partner-add"><i class="fas fa-user-plus me-2"></i> পার্টনার অ্যাড</a>
-            <a onclick="showSection('reports')" class="nav-link" id="btn-reports"><i class="fas fa-file-invoice-dollar me-2"></i> পার্টনার লেনদেন রিপোর্ট</a>
+            <a onclick="showSection('collection')" class="nav-link" id="btn-collection"><i class="fas fa-hand-holding-usd me-2"></i> কালেকশন</a>
             <div class="mt-5 p-3"><button onclick="location.reload()" class="btn btn-outline-danger w-100 btn-sm">লগ আউট</button></div>
         </div>
     </div>
@@ -80,8 +81,9 @@
     <div class="mobile-nav">
         <a onclick="showSection('dashboard')" class="nav-item active" id="mbtn-dashboard"><i class="fas fa-home"></i>ড্যাশবোর্ড</a>
         <a onclick="showSection('entry')" class="nav-item" id="mbtn-entry"><i class="fas fa-plus-circle"></i>এন্ট্রি</a>
+        <a onclick="showSection('collection')" class="nav-item" id="mbtn-collection"><i class="fas fa-hand-holding-usd"></i>কালেকশন</a>
         <a onclick="showSection('partner-add')" class="nav-item" id="mbtn-partner-add"><i class="fas fa-user-plus"></i>পার্টনার</a>
-        <a onclick="showSection('reports')" class="nav-item" id="mbtn-reports"><i class="fas fa-file-alt"></i>রিপোর্ট</a>
+        <a onclick="showSection('reports')" class="nav-item" id="mbtn-reports"><i class="fas fa-file-alt"></i> রিপোর্ট</a>
     </div>
 
     <div class="main-content">
@@ -92,7 +94,6 @@
                     <i class="fas fa-sync-alt me-1"></i> রিফ্রেশ
                 </button>
             </div>
-            
             <div class="row g-4 mb-4">
                 <div class="col-md-3 col-6">
                     <div class="stat-card border-start border-primary border-4">
@@ -108,7 +109,7 @@
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-card border-start border-danger border-4">
-                        <h6 class="text-muted small">বর্তমান বকেয়া</h6>
+                        <h6 class="text-muted small">নিট বকেয়া</h6>
                         <h3 class="fw-bold text-danger">৳ <span id="dash-due">০</span></h3>
                     </div>
                 </div>
@@ -135,65 +136,87 @@
 
         <div id="section-entry" class="hidden">
             <h3 class="fw-bold mb-4">নতুন লেনদেন ও এন্ট্রি</h3>
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="stat-card">
-                        <h5 class="fw-bold mb-3 text-primary"><i class="fas fa-paper-plane me-2"></i>টাকা পাঠানো/পাওনা এন্ট্রি</h5>
-                        <form id="transForm" class="row g-3">
-                            <div class="col-md-6"><label class="fw-bold">পার্টনার নির্বাচন</label>
-                                <select id="p_name" class="form-select" required></select>
-                            </div>
-                            <div class="col-md-3"><label class="fw-bold">মাধ্যম</label>
-                                <select id="p_chan" class="form-select">
-                                    <option>বিকাশ</option><option>নগদ</option><option>রকেট</option><option>রিচার্জ</option><option>ব্যাংক/ক্যাশ</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3"><label class="fw-bold">টাইপ</label>
-                                <select id="p_type" class="form-select">
-                                    <option value="Sent">পাঠিয়েছি (পাওনা)</option>
-                                    <option value="Received">পেয়েছি (জমা)</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6"><label class="fw-bold">মোবাইল নম্বর / রেফারেন্স</label>
-                                <input type="text" id="p_num" class="form-control" placeholder="017XXXXXXXX">
-                            </div>
-                            <div class="col-md-3"><label class="fw-bold">পরিমাণ (৳)</label>
-                                <input type="number" id="p_amt" class="form-control" required>
-                            </div>
-                            <div class="col-md-3"><label class="fw-bold">পিন / লাস্ট ডিজিট</label>
-                                <input type="text" id="p_pin" class="form-control">
-                            </div>
-                            <div class="col-md-3"><label class="fw-bold">মেসেজ সংখ্যা</label>
-                                <input type="number" id="p_msg" class="form-control" value="1">
-                            </div>
-                            <div class="col-md-12 mt-4 text-end">
-                                <button type="submit" id="saveBtn" class="btn btn-primary px-5 fw-bold">লেনদেন সেভ করুন</button>
-                            </div>
-                        </form>
+            <div class="stat-card">
+                <h5 class="fw-bold mb-3 text-primary"><i class="fas fa-paper-plane me-2"></i>টাকা পাঠানো/পাওনা এন্ট্রি</h5>
+                <form id="transForm" class="row g-3">
+                    <div class="col-md-6"><label class="fw-bold">পার্টনার নির্বাচন</label>
+                        <select id="p_name" class="form-select" required></select>
                     </div>
-                </div>
-                <div class="col-md-4 mt-4 mt-md-0">
+                    <div class="col-md-3"><label class="fw-bold">মাধ্যম</label>
+                        <select id="p_chan" class="form-select">
+                            <option>বিকাশ</option><option>নগদ</option><option>রকেট</option><option>রিচার্জ</option><option>ব্যাংক/ক্যাশ</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3"><label class="fw-bold">টাইপ</label>
+                        <select id="p_type" class="form-select">
+                            <option value="Sent">পাঠিয়েছি (পাওনা)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6"><label class="fw-bold">মোবাইল নম্বর / রেফারেন্স</label>
+                        <input type="text" id="p_num" class="form-control" placeholder="017XXXXXXXX">
+                    </div>
+                    <div class="col-md-2"><label class="fw-bold">পরিমাণ (৳)</label>
+                        <input type="number" id="p_amt" class="form-control" required>
+                    </div>
+                    <div class="col-md-2"><label class="fw-bold">পিন / লাস্ট ডিজিট</label>
+                        <input type="text" id="p_pin" class="form-control">
+                    </div>
+                    <div class="col-md-2"><label class="fw-bold">মেসেজ সংখ্যা</label>
+                        <input type="number" id="p_msg" class="form-control" value="1">
+                    </div>
+                    <div class="col-md-12 mt-4 text-end">
+                        <button type="submit" id="saveBtn" class="btn btn-primary px-5 fw-bold">লেনদেন সেভ করুন</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="section-collection" class="hidden">
+            <h3 class="fw-bold mb-4">পেমেন্ট কালেকশন (জমা)</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
                     <div class="stat-card border-top border-success border-4">
-                        <h5 class="fw-bold mb-3 text-success"><i class="fas fa-hand-holding-usd me-2"></i>পেমেন্ট কালেকশন</h5>
+                        <h5 class="fw-bold mb-3 text-success"><i class="fas fa-plus-circle me-2"></i>জমা এন্ট্রি ফর্ম</h5>
                         <form id="collectionForm">
                             <div class="mb-3">
+                                <label class="fw-bold small">জমার তারিখ</label>
+                                <input type="date" id="coll_date" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
                                 <label class="fw-bold small">পার্টনার</label>
-                                <select id="coll_p_name" class="form-select form-select-sm" required></select>
+                                <select id="coll_p_name" class="form-select" required></select>
                             </div>
                             <div class="mb-3">
                                 <label class="fw-bold small">জমার মাধ্যম</label>
-                                <select id="coll_method" class="form-select form-select-sm">
-                                    <option>ক্যাশ (Cash)</option>
-                                    <option>ব্যাংক ট্রান্সফার</option>
-                                    <option>অন্যান্য</option>
+                                <select id="coll_method" class="form-select">
+                                    <option>ক্যাশ জমা</option>
+                                    <option>ব্যাংক জমা</option>
+                                    <option>মোবাইল ব্যাংকিং</option>
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label class="fw-bold small">জমার পরিমাণ (৳)</label>
-                                <input type="number" id="coll_amt" class="form-control form-control-sm" required>
+                                <input type="number" id="coll_amt" class="form-control" required>
                             </div>
-                            <button type="submit" class="btn btn-success w-100 btn-sm fw-bold"> জমা কালেকশন সেভ করুন</button>
+                            <button type="submit" class="btn btn-success w-100 fw-bold">কালেকশন সেভ করুন</button>
                         </form>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="stat-card">
+                        <h5 class="fw-bold mb-3">জমার রিপোর্ট</h5>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6"><input type="date" id="coll_filter_date" class="form-control form-control-sm" onchange="filterCollectionTable()"></div>
+                            <div class="col-6"><select id="coll_filter_partner" class="form-select form-select-sm" onchange="filterCollectionTable()"></select></div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle">
+                                <thead class="table-light">
+                                    <tr><th>তারিখ</th><th>পার্টনার</th><th>মাধ্যম</th><th>পরিমাণ</th></tr>
+                                </thead>
+                                <tbody id="collection-history-body"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -212,35 +235,44 @@
         </div>
 
         <div id="section-reports" class="hidden">
-            <div class="d-flex justify-content-between mb-4 flex-wrap">
-                <h3 class="fw-bold">পার্টনার লেনদেন রিপোর্ট</h3>
-                <div>
-                    <button onclick="downloadPDF()" class="btn btn-danger btn-sm"><i class="fas fa-file-pdf me-2"></i>PDF</button>
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                <h3 class="fw-bold mb-0">পার্টনার লেনদেন রিপোর্ট</h3>
+                <button onclick="downloadPDF()" class="btn btn-danger btn-sm"><i class="fas fa-file-pdf"></i> PDF</button>
+            </div>
+
+            <div class="stat-card mb-4 bg-light">
+                <div class="row g-2 align-items-end">
+                    <div class="col-2"><button onclick="changeDate(-1)" class="btn btn-outline-primary btn-sm w-100 py-2"><i class="fas fa-arrow-left"></i></button></div>
+                    <div class="col-8">
+                        <label class="small fw-bold mb-1 text-primary">তারিখ নির্বাচন করুন</label>
+                        <input type="date" id="filter_date" class="form-control" onchange="filterLedger()">
+                    </div>
+                    <div class="col-2"><button onclick="changeDate(1)" class="btn btn-outline-primary btn-sm w-100 py-2"><i class="fas fa-arrow-right"></i></button></div>
                 </div>
             </div>
 
             <div class="row g-3 mb-4">
                 <div class="col-md-3 col-6">
-                    <div class="stat-card bg-primary text-white">
-                        <small>মোট পাওনা</small>
+                    <div class="stat-card bg-primary text-white p-3">
+                        <small>আজকের মোট পাঠানো </small>
                         <h4 class="fw-bold mb-0">৳ <span id="rep-total-sent">০</span></h4>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div class="stat-card bg-success text-white">
-                        <small>মোট জমা</small>
+                    <div class="stat-card bg-success text-white p-3">
+                        <small>আজকের মোট জমা</small>
                         <h4 class="fw-bold mb-0">৳ <span id="rep-total-received">০</span></h4>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div class="stat-card bg-warning text-dark">
-                        <small>বর্তমান বকেয়া</small>
+                    <div class="stat-card bg-warning text-dark p-3">
+                        <small>নিট বকেয়া</small>
                         <h4 class="fw-bold mb-0">৳ <span id="rep-net-due">০</span></h4>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div id="wa-btn-container" class="stat-card bg-dark text-white d-flex align-items-center justify-content-center" style="cursor:pointer; height: 100%;">
-                        <h6 class="mb-0 small"><i class="fab fa-whatsapp me-1 text-success"></i> WhatsApp</h6>
+                    <div id="wa-btn-container" class="stat-card bg-dark text-white d-flex align-items-center justify-content-center p-3" style="cursor:pointer; height: 100%;">
+                        <h6 class="mb-0 small"><i class="fab fa-whatsapp me-1 text-success"></i> WhatsApp সামারি</h6>
                     </div>
                 </div>
             </div>
@@ -252,7 +284,7 @@
                     </select>
                 </div>
                 <div class="col-md-8">
-                    <input type="text" id="searchInput" class="form-control" placeholder="খুঁজুন..." onkeyup="filterLedger()">
+                    <input type="text" id="searchInput" class="form-control" placeholder="বিবরণ দিয়ে খুঁজুন..." onkeyup="filterLedger()">
                 </div>
             </div>
 
@@ -260,7 +292,7 @@
                 <div class="table-responsive">
                     <table class="table table-hover align-middle mb-0" id="ledger-table" style="font-size: 14px;">
                         <thead class="table-dark">
-                            <tr><th>তারিখ</th><th>পার্টনার</th><th>বিবরণ</th><th>পাঠানো</th><th>জমা</th><th>অ্যাকশন</th></tr>
+                            <tr><th>তারিখ ও সময়</th><th>পার্টনার</th><th>বিবরণ/নম্বর</th><th>পিন/লাস্ট ডিজিট</th><th>MSG</th><th>পাঠানো</th><th>অ্যাকশন</th></tr>
                         </thead>
                         <tbody id="ledger-body"></tbody>
                     </table>
@@ -273,6 +305,12 @@
 <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzR3k-hXrQEa7YlfsskDUYLUd3o9GqJ3SCgIVA2NFcCfX35IoPaUXiJK9G95vedjbIr0A/exec";
     let rawData = { partners: [], transactions: [] };
+
+    window.onload = () => {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('filter_date').value = today;
+        document.getElementById('coll_date').value = today;
+    };
 
     function login() {
         const u = document.getElementById('user').value;
@@ -296,6 +334,7 @@
             updatePartnerDropdowns();
             updateDashboard();
             updateLedgerTable();
+            filterCollectionTable();
         } catch (e) {
             console.error("ডাটা লোড করতে সমস্যা হয়েছে:", e);
         } finally {
@@ -314,8 +353,7 @@
     }
 
     function showSection(id) {
-        // Desktop nav update
-        ['dashboard', 'entry', 'partner-add', 'reports'].forEach(s => {
+        ['dashboard', 'entry', 'collection', 'partner-add', 'reports'].forEach(s => {
             const sec = document.getElementById('section-'+s);
             const btn = document.getElementById('btn-'+s);
             const mbtn = document.getElementById('mbtn-'+s);
@@ -323,21 +361,28 @@
             if(btn) btn.classList.remove('active');
             if(mbtn) mbtn.classList.remove('active');
         });
-
         const targetSec = document.getElementById('section-'+id);
         const targetBtn = document.getElementById('btn-'+id);
         const targetMBtn = document.getElementById('mbtn-'+id);
         if(targetSec) targetSec.classList.remove('hidden');
         if(targetBtn) targetBtn.classList.add('active');
         if(targetMBtn) targetMBtn.classList.add('active');
-        
-        if(id === 'dashboard' || id === 'reports') refreshData();
+        if(id === 'dashboard' || id === 'reports' || id === 'collection') refreshData();
+    }
+
+    function changeDate(days) {
+        const dateInput = document.getElementById('filter_date');
+        let current = new Date(dateInput.value);
+        current.setDate(current.getDate() + days);
+        dateInput.value = current.toISOString().split('T')[0];
+        filterLedger();
     }
 
     function updatePartnerDropdowns() {
         const pSelect = document.getElementById('p_name');
         const cSelect = document.getElementById('coll_p_name');
         const rSelect = document.getElementById('report_p_name');
+        const cfSelect = document.getElementById('coll_filter_partner');
         let options = '<option value="">বাছাই করুন</option>';
         if(rawData.partners) {
             rawData.partners.forEach(p => { options += `<option value="${p[1]}">${p[1]}</option>`; });
@@ -345,26 +390,24 @@
         if(pSelect) pSelect.innerHTML = options;
         if(cSelect) cSelect.innerHTML = options;
         if(rSelect) rSelect.innerHTML = options;
+        if(cfSelect) cfSelect.innerHTML = '<option value="">সকল পার্টনার</option>' + options;
     }
 
     function updateDashboard() {
         let sentToday = 0, receivedToday = 0, totalDue = 0, totalMsgs = 0;
-        const today = new Date().toLocaleDateString('en-GB').split('/').join('-');
-
+        const todayStr = new Date().toLocaleDateString('en-GB').split('/').join('-');
         if(rawData.transactions) {
             rawData.transactions.forEach(t => {
-                if(t[0] && t[0].includes(today)) {
+                if(t[0] && t[0].includes(todayStr)) {
                     sentToday += Number(t[2]) || 0;
                     receivedToday += Number(t[3]) || 0;
                     totalMsgs += Number(t[4]) || 0;
                 }
             });
         }
-
         if(rawData.partners) {
             rawData.partners.forEach(p => { totalDue += Number(p[4]) || 0; });
         }
-
         document.getElementById('dash-sent').innerText = sentToday.toLocaleString('bn-BD');
         document.getElementById('dash-received').innerText = receivedToday.toLocaleString('bn-BD');
         document.getElementById('dash-due').innerText = totalDue.toLocaleString('bn-BD');
@@ -376,16 +419,7 @@
                 const sVal = Number(t[2]) || 0;
                 const rVal = Number(t[3]) || 0;
                 const amt = sVal > 0 ? sVal : rVal;
-                const typeText = sVal > 0 ? 'পাঠানো' : 'জমা';
-                const typeClass = sVal > 0 ? 'bg-primary' : 'bg-success';
-                
-                return `<tr>
-                    <td>${t[0].split(' ')[1] || t[0]}</td>
-                    <td>${t[1]}</td>
-                    <td>৳${amt}</td>
-                    <td><span class="badge ${typeClass}">${typeText}</span></td>
-                    <td><button class="btn btn-sm btn-light" onclick="showSection('reports')">Detail</button></td>
-                </tr>`;
+                return `<tr><td>${t[0].split(' ')[1] || t[0]}</td><td>${t[1]}</td><td>৳${amt}</td><td><span class="badge ${sVal > 0 ? 'bg-primary' : 'bg-success'}">${sVal > 0 ? 'পাঠানো' : 'জমা'}</span></td><td><button class="btn btn-sm btn-light" onclick="showSection('reports')">Detail</button></td></tr>`;
             }).join('');
         }
     }
@@ -396,15 +430,15 @@
             tbody.innerHTML = rawData.transactions.map((t, index) => {
                 const sVal = Number(t[2]) || 0;
                 const rVal = Number(t[3]) || 0;
+                if(rVal > 0) return ''; // শুধুমাত্র পাঠানোগুলো দেখাবে
                 return `<tr id="row-${index}">
-                    <td>${t[0].split(' ')[0]}</td>
+                    <td>${t[0]}</td>
                     <td>${t[1]}</td>
                     <td>${t[5] || '-'}</td>
-                    <td class="text-primary fw-bold">${sVal > 0 ? '৳'+sVal : '-'}</td>
-                    <td class="text-success fw-bold">${rVal > 0 ? '৳'+rVal : '-'}</td>
-                    <td>
-                        <button onclick="editEntry(${index})" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
-                    </td>
+                    <td class="fw-bold">${t[6] || '-'}</td>
+                    <td>${t[4] || '0'}</td>
+                    <td class="text-primary fw-bold">৳${sVal}</td>
+                    <td><button onclick="editEntry(${index})" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button></td>
                 </tr>`;
             }).join('');
         }
@@ -414,15 +448,20 @@
     function filterLedger() {
         const pFilter = document.getElementById('report_p_name').value;
         const sFilter = document.getElementById('searchInput').value.toLowerCase();
+        const dateFilter = document.getElementById('filter_date').value;
+        let formattedDate = "";
+        if(dateFilter) {
+            const parts = dateFilter.split('-');
+            formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+        }
         let tSent = 0, tReceived = 0, netDue = 0;
-
         if(rawData.transactions) {
             rawData.transactions.forEach((t, index) => {
                 const rowEl = document.getElementById(`row-${index}`);
+                const matchesDate = formattedDate === "" || t[0].includes(formattedDate);
                 const matchesPartner = pFilter === "" || t[1] === pFilter;
-                const matchesSearch = (t[0] + t[1] + (t[5]||'')).toLowerCase().includes(sFilter);
-
-                if (matchesPartner && matchesSearch) {
+                const matchesSearch = (t[1] + (t[5]||'')).toLowerCase().includes(sFilter);
+                if (matchesDate && matchesPartner && matchesSearch) {
                     if(rowEl) rowEl.style.display = "";
                     tSent += Number(t[2]) || 0;
                     tReceived += Number(t[3]) || 0;
@@ -431,109 +470,110 @@
                 }
             });
         }
-
         if(pFilter !== "") {
             const pData = rawData.partners.find(p => p[1] === pFilter);
             netDue = pData ? Number(pData[4]) : 0;
         } else if(rawData.partners) {
             rawData.partners.forEach(p => { netDue += Number(p[4]) || 0; });
         }
-
         document.getElementById('rep-total-sent').innerText = tSent.toLocaleString('bn-BD');
         document.getElementById('rep-total-received').innerText = tReceived.toLocaleString('bn-BD');
         document.getElementById('rep-net-due').innerText = netDue.toLocaleString('bn-BD');
 
         const waContainer = document.getElementById('wa-btn-container');
         if(waContainer) {
-            waContainer.onclick = pFilter ? () => sendReminder(pFilter) : () => Swal.fire("পার্টনার সিলেক্ট করুন!");
+            waContainer.onclick = pFilter ? () => sendDaySummary(pFilter, formattedDate) : () => Swal.fire("পার্টনার সিলেক্ট করুন!");
         }
+    }
+
+    function filterCollectionTable() {
+        const pFilter = document.getElementById('coll_filter_partner').value;
+        const dFilter = document.getElementById('coll_filter_date').value;
+        const tbody = document.getElementById('collection-history-body');
+        
+        let formattedDate = "";
+        if(dFilter) {
+            const parts = dFilter.split('-');
+            formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+        }
+
+        if(tbody && rawData.transactions) {
+            tbody.innerHTML = rawData.transactions
+            .filter(t => Number(t[3]) > 0)
+            .filter(t => pFilter === "" || t[1] === pFilter)
+            .filter(t => formattedDate === "" || t[0].includes(formattedDate))
+            .map(t => `<tr><td>${t[0].split(' ')[0]}</td><td>${t[1]}</td><td>${t[6] || 'জমা'}</td><td class="text-success fw-bold">৳${t[3]}</td></tr>`)
+            .join('');
+        }
+    }
+
+    function sendDaySummary(name, dateStr) {
+        const partner = rawData.partners.find(p => p[1] === name);
+        if(!partner) return;
+        let daySent = 0, dayReceived = 0;
+        rawData.transactions.forEach(t => {
+            if(t[1] === name && t[0].includes(dateStr)) {
+                daySent += Number(t[2]) || 0;
+                dayReceived += Number(t[3]) || 0;
+            }
+        });
+        const due = document.getElementById('rep-net-due').innerText;
+        const msg = `*দৈনিক লেনদেন সামারি*\nতারিখ: ${dateStr}\nপার্টনার: ${name}\n----------------------\nআজকের পাঠানো: ৳${daySent}\nআজকের জমা: ৳${dayReceived}\n----------------------\n*বর্তমান নিট বকেয়া: ৳${due}*\nধন্যবাদ।\n- মা এন্টারপ্রাইজ`;
+        window.open(`https://wa.me/88${partner[2]}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
     async function editEntry(index) {
         const t = rawData.transactions[index];
-        const sVal = Number(t[2]) || 0;
-        const rVal = Number(t[3]) || 0;
-        const currentAmt = sVal > 0 ? sVal : rVal;
-
         const { value: formValues } = await Swal.fire({
             title: 'এডিট করুন',
-            html: `<input id="swal-amt" class="swal2-input" value="${currentAmt}"><input id="swal-desc" class="swal2-input" value="${t[5] || ''}">`,
+            html: `<input id="swal-amt" class="swal2-input" value="${t[2]}"><input id="swal-desc" class="swal2-input" value="${t[5] || ''}">`,
             showCancelButton: true,
             confirmButtonText: 'আপডেট',
-            preConfirm: () => {
-                return { amount: document.getElementById('swal-amt').value, desc: document.getElementById('swal-desc').value }
-            }
+            preConfirm: () => { return { amount: document.getElementById('swal-amt').value, desc: document.getElementById('swal-desc').value } }
         });
-
         if (formValues) {
-            const data = { action: "editTransaction", index: index, amount: formValues.amount, desc: formValues.desc, type: sVal > 0 ? "Sent" : "Received" };
+            const data = { action: "editTransaction", index: index, amount: formValues.amount, desc: formValues.desc, type: "Sent" };
             if(await apiCall(data)) { Swal.fire("সফল!", "আপডেট হয়েছে", "success"); refreshData(); }
         }
     }
 
-    const tForm = document.getElementById('transForm');
-    if(tForm) {
-        tForm.onsubmit = async function(e) {
-            e.preventDefault();
-            const data = {
-                action: "addTransaction",
-                partnerName: document.getElementById('p_name').value,
-                channel: document.getElementById('p_chan').value,
-                type: document.getElementById('p_type').value,
-                number: document.getElementById('p_num').value,
-                amount: document.getElementById('p_amt').value,
-                lastDigit: document.getElementById('p_pin').value,
-                msgCount: document.getElementById('p_msg').value
-            };
-            if(await apiCall(data)) { Swal.fire("সফল!", "সেভ হয়েছে।", "success"); this.reset(); refreshData(); }
+    document.getElementById('transForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const data = {
+            action: "addTransaction", partnerName: document.getElementById('p_name').value,
+            channel: document.getElementById('p_chan').value, type: "Sent",
+            number: document.getElementById('p_num').value, amount: document.getElementById('p_amt').value,
+            lastDigit: document.getElementById('p_pin').value, msgCount: document.getElementById('p_msg').value
         };
-    }
+        if(await apiCall(data)) { Swal.fire("সফল!", "লেনদেন সেভ হয়েছে", "success"); this.reset(); refreshData(); }
+    };
 
-    const cForm = document.getElementById('collectionForm');
-    if(cForm) {
-        cForm.onsubmit = async function(e) {
-            e.preventDefault();
-            const data = {
-                action: "addTransaction",
-                partnerName: document.getElementById('coll_p_name').value,
-                channel: "Cash/Bank", type: "Received", number: "Collection",
-                amount: document.getElementById('coll_amt').value,
-                lastDigit: document.getElementById('coll_method').value,
-                msgCount: 0
-            };
-            if(await apiCall(data)) { Swal.fire("সফল!", "কালেকশন জমা হয়েছে।", "success"); this.reset(); refreshData(); }
+    document.getElementById('collectionForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const data = {
+            action: "addTransaction", partnerName: document.getElementById('coll_p_name').value,
+            channel: "Collection", type: "Received", number: "Collection",
+            amount: document.getElementById('coll_amt').value, lastDigit: document.getElementById('coll_method').value,
+            msgCount: 0, date: document.getElementById('coll_date').value
         };
-    }
+        if(await apiCall(data)) { Swal.fire("সফল!", "কালেকশন সেভ হয়েছে", "success"); this.reset(); refreshData(); }
+    };
 
-    const pForm = document.getElementById('partnerForm');
-    if(pForm) {
-        pForm.onsubmit = async function(e) {
-            e.preventDefault();
-            const data = {
-                action: "addPartner",
-                name: document.getElementById('np_name').value,
-                phone: document.getElementById('np_phone').value,
-                opening: document.getElementById('np_opening').value
-            };
-            if(await apiCall(data)) { Swal.fire("সফল!", "পার্টনার যুক্ত হয়েছে", "success"); this.reset(); refreshData(); }
+    document.getElementById('partnerForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const data = {
+            action: "addPartner", name: document.getElementById('np_name').value,
+            phone: document.getElementById('np_phone').value, opening: document.getElementById('np_opening').value
         };
-    }
-
-    function sendReminder(name) {
-        const partner = rawData.partners.find(p => p[1] === name);
-        if(partner) {
-            const due = document.getElementById('rep-net-due').innerText;
-            const msg = `প্রিয় ${name}, আপনার বর্তমান নিট বকেয়া ৳${due}। দ্রুত পরিশোধ করুন। ধন্যবাদ।`;
-            window.open(`https://wa.me/88${partner[2]}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-    }
+        if(await apiCall(data)) { Swal.fire("সফল!", "পার্টনার যুক্ত হয়েছে", "success"); this.reset(); refreshData(); }
+    };
 
     function downloadPDF() {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF('l', 'mm', 'a4');
-        doc.text("Transaction Ledger Report", 14, 15);
+        doc.text("Ma Enterprise - Transaction Ledger Report", 14, 15);
         doc.autoTable({ html: '#ledger-table', theme: 'grid', startY: 20 });
-        doc.save("ledger_report.pdf");
+        doc.save("Ma_Enterprise_Report.pdf");
     }
 </script>
 </body>
